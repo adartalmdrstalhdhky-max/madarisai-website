@@ -1,30 +1,19 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تسجيل طالب جديد | Madaris AI</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body style="display: flex; justify-content: center; align-items: center; min-height: 100vh;">
-
-    <div style="background: rgba(255, 255, 255, 0.05); padding: 40px; border-radius: 24px; border: 1px solid rgba(0, 210, 255, 0.2); width: 90%; max-width: 450px; text-align: center;">
-        <img src="logo.png" alt="Logo" style="width: 100px; margin-bottom: 20px;">
-        <h2 style="color: #00d2ff;">انضم لجيل المستقبل</h2>
-        <p style="color: #a0aec0; margin-bottom: 30px;">سجل بياناتك للبدء في رحلة التعلم الذكي</p>
-
-        <form style="display: flex; flex-direction: column; gap: 15px;">
-            <input type="text" placeholder="اسم الطالب الرباعي" style="padding: 15px; border-radius: 10px; border: 1px solid #334155; background: #0f172a; color: white; text-align: right;">
-            <input type="text" placeholder="المرحلة الدراسية" style="padding: 15px; border-radius: 10px; border: 1px solid #334155; background: #0f172a; color: white; text-align: right;">
-            <input type="password" placeholder="كلمة المرور" style="padding: 15px; border-radius: 10px; border: 1px solid #334155; background: #0f172a; color: white; text-align: right;">
+<script>
+    function saveStudent() {
+        const name = document.getElementById('studentName').value;
+        const level = document.getElementById('studentLevel').value;
+        
+        if(name && level) {
+            // حفظ البيانات في ذاكرة المتصفح (عمل حقيقي)
+            const studentData = { name: name, level: level, date: new Date().toLocaleDateString() };
+            localStorage.setItem('currentStudent', JSON.stringify(studentData));
             
-            <button type="button" class="cta-button" style="border: none; cursor: pointer; margin-top: 10px;">إنشاء حساب جديد</button>
-        </form>
+            alert('تم تسجيلك بنجاح يا ' + name + '! سيتم توجيهك للوحة التحكم.');
+            window.location.href = 'dashboard.html';
+        } else {
+            alert('يرجى ملء كافة الحقول');
+        }
+    }
+</script>
 
-        <p style="margin-top: 20px; font-size: 0.8rem; color: #64748b;">ملاحظة: النظام يدعم الحفظ المحلي في حال عدم توفر الإنترنت.</p>
-        <a href="index.html" style="color: #00d2ff; text-decoration: none; font-size: 0.9rem; display: block; margin-top: 15px;">العودة للرئيسية</a>
-    </div>
-
-</body>
-</html>
-
+<button type="button" onclick="saveStudent()" class="cta-button">إنشاء حساب جديد</button>
