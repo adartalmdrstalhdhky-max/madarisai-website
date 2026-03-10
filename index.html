@@ -3,146 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Madaris AI | منصة مدارس آل الذكية</title>
     
-    <title>Madaris AI | منصة مدارس آل التعليمية الذكية</title>
-    <meta name="description" content="منصة مدارس آل: أول نظام تعليمي ذكي في اليمن يعمل بدون إنترنت لدعم الطلاب والمعلمين.">
-    <meta name="keywords" content="مدارس آل, Madaris AI, تعليم ذكي, اليمن, ذكاء اصطناعي">
+    <meta name="description" content="منصة مدارس آل: النظام التعليمي الذكي الأول في اليمن الذي يعمل بدون إنترنت.">
+    <meta name="keywords" content="مدارس آل, اليمن, تعليم ذكي, ذكاء اصطناعي">
     
-    <link rel="icon" type="image/png" href="logo.png">
-
+    <link rel="icon" type="image/png" href="assets/logo.png">
+    
     <style>
-        :root {
-            --bg-dark: #050a18;
-            --card-blue: #112240;
-            --cyan: #00d2ff;
-            --gold: #d4af37;
-        }
-
-        body {
-            background-color: var(--bg-dark);
-            color: white;
-            margin: 0;
-            font-family: 'Segoe UI', Tahoma, sans-serif;
-            line-height: 1.6;
-        }
-
-        /* القائمة العلوية */
-        nav {
-            padding: 15px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(17, 34, 64, 0.95);
-            position: fixed;
-            width: 90%;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(0, 210, 255, 0.1);
-        }
-
-        .logo-area { display: flex; align-items: center; }
-        .logo-area img { height: 45px; margin-left: 12px; }
-
-        /* القسم الرئيسي */
-        .hero {
-            padding: 160px 20px 60px;
-            text-align: center;
-        }
-
-        /* حل مشكلة الشعار (ملاحظة صديقك رقم 1) */
-        .hero img {
-            width: 180px;
-            margin-bottom: 30px;
-            filter: drop-shadow(0 0 15px var(--cyan));
-        }
-
-        h1 { font-size: 2.8rem; margin-bottom: 15px; color: var(--cyan); }
-        .tagline { font-size: 1.2rem; color: #cbd5e1; max-width: 700px; margin: 0 auto 40px; }
-
-        /* تفعيل الأزرار بروابط حقيقية (ملاحظة صديقك رقم 2) */
-        .btn-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-        }
-
-        .btn {
-            padding: 16px 35px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: 0.3s;
-            min-width: 180px;
-            text-align: center;
-        }
-
-        .btn-student { background: linear-gradient(45deg, var(--cyan), var(--gold)); color: white; }
-        .btn-teacher { border: 2px solid var(--cyan); color: white; }
-
-        .btn:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0, 210, 255, 0.3); }
-
-        /* قسم المميزات */
-        .features {
-            padding: 60px 10%;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .feature-card {
-            background: var(--card-blue);
-            padding: 30px;
-            border-radius: 20px;
-            border-top: 4px solid var(--cyan);
-            text-align: center;
-        }
-
-        footer { padding: 40px; text-align: center; color: #4a5568; border-top: 1px solid #112240; }
+        :root { --bg: #050a18; --accent: #00d2ff; --gold: #d4af37; }
+        body { background: var(--bg); color: white; margin: 0; font-family: 'Segoe UI', sans-serif; text-align: center; }
+        nav { padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; background: rgba(17,34,64,0.9); border-bottom: 1px solid rgba(0,210,255,0.1); }
+        .hero { padding: 120px 20px; }
+        .hero img { width: 180px; filter: drop-shadow(0 0 15px var(--accent)); margin-bottom: 20px; }
+        .btn-group { display: flex; flex-direction: column; gap: 15px; align-items: center; margin-top: 40px; }
+        .btn { width: 260px; padding: 18px; border-radius: 50px; text-decoration: none; font-weight: bold; transition: 0.3s; }
+        .btn-primary { background: linear-gradient(45deg, var(--accent), var(--gold)); color: white; box-shadow: 0 10px 20px rgba(0,210,255,0.2); }
+        .btn-outline { border: 2px solid var(--accent); color: white; }
+        .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; padding: 50px 10%; }
+        .f-card { background: #112240; padding: 25px; border-radius: 20px; border-top: 3px solid var(--accent); }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="logo-area">
-            <img src="logo.png" alt="Madaris AI">
-            <span style="font-size: 1.5rem; font-weight: bold; color: var(--cyan);">Madaris AI</span>
+        <div style="display:flex; align-items:center;">
+            <img src="assets/logo.png" alt="Logo" style="height:40px; margin-left:10px;" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3483/3483011.png'">
+            <span style="font-size:1.5rem; font-weight:bold; color:var(--accent);">Madaris AI</span>
         </div>
-        <div>
-            <a href="register.html" style="color: white; text-decoration: none; margin-left: 20px;">دخول الطلاب</a>
-        </div>
+        <a href="pages/register.html" style="color:white; text-decoration:none; font-weight:bold;">دخول الطلاب</a>
     </nav>
 
     <header class="hero">
-        <img src="logo.png" alt="شعار مدارس آل">
-        <h1>منصة مدارس آل الذكية</h1>
-        <p class="tagline">نحو تعليم يمني متطور، يعمل بكفاءة مع أو بدون إنترنت، لتمكين الطلاب والمعلمين بأدوات الذكاء الاصطناعي.</p>
+        <img src="assets/logo.png" alt="مدارس آل">
+        <h1>منصة مدارس آل (BarakatEdu)</h1>
+        <p style="color:#cbd5e1; max-width:600px; margin:0 auto;">النظام التعليمي الذكي الأول في اليمن المصمم للعمل بكفاءة في أصعب الظروف التقنية.</p>
         
         <div class="btn-group">
-            <a href="register.html" class="btn btn-student">بوابة الطلاب</a>
-            <a href="teachers.html" class="btn btn-teacher">بوابة المعلمين</a>
-            <a href="admin.html" class="btn" style="border: 1px solid #4a5568; color: #a0aec0;">لوحة الإدارة</a>
+            <a href="pages/register.html" class="btn btn-primary">بوابة الطلاب</a>
+            <a href="pages/teachers.html" class="btn btn-outline">بوابة المعلمين</a>
+            <a href="pages/developers.html" style="color:#4a5568; text-decoration:none; font-size:0.9rem;">انضم كمطور للمشروع</a>
         </div>
     </header>
 
     <section class="features">
-        <div class="feature-card">
-            <h3>🌐 يعمل أوفلاين</h3>
-            <p>لا تقلق بشأن انقطاع الإنترنت، المنصة مصممة لتعمل في أصعب الظروف التقنية.</p>
-        </div>
-        <div class="feature-card">
-            <h3>🤖 مساعد ذكي</h3>
-            <p>مساعد شخصي لكل طالب يقوم بتوضيح الدروس وحل المشكلات التعليمية فوراً.</p>
-        </div>
-        <div class="feature-card">
-            <h3>📊 إدارة شاملة</h3>
-            <p>لوحات تحكم دقيقة للمعلمين والمدراء لمتابعة مستوى التحصيل العلمي.</p>
-        </div>
+        <div class="f-card"><h3>أوفلاين بالكامل</h3><p>يعمل النظام في المناطق الريفية بدون الحاجة لإنترنت مستمر.</p></div>
+        <div class="f-card"><h3>ذكاء اصطناعي</h3><p>مساعد ذكي مدمج لتسهيل الدروس الصعبة للطلاب.</p></div>
+        <div class="f-card"><h3>تقارير إدارية</h3><p>نظام تتبع دقيق للمعلمين لمراقبة التحصيل العلمي.</p></div>
     </section>
 
-    <footer>
-        جميع الحقوق محفوظة &copy; 2026 - مشروع مدارس آل (Madaris AI)
-    </footer>
-
+    <footer style="padding:40px; color:#4a5568;">&copy; 2026 مشروع مدارس آل - اليمن</footer>
 </body>
 </html>
