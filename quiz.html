@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>بنك الأسئلة الذكي | Madaris AI</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body style="background: #050a18;">
+
+    <div style="max-width: 700px; margin: 50px auto; padding: 20px; text-align: center;">
+        <img src="logo.png" style="width: 80px; margin-bottom: 20px;">
+        <h2 style="color: #00d2ff;">اختبار تقييم الذكاء الاصطناعي</h2>
+        
+        <div id="quiz-box" style="background: #112240; padding: 40px; border-radius: 25px; border: 1px solid rgba(0,210,255,0.2); margin-top: 20px;">
+            <p id="question" style="font-size: 1.4rem; margin-bottom: 30px;">جاري تحميل السؤال...</p>
+            <div id="options" style="display: grid; gap: 15px;">
+                </div>
+        </div>
+
+        <div id="result" style="display: none; margin-top: 30px;">
+            <h1 style="color: #d4af37;">مبروك!</h1>
+            <p id="score-text" style="font-size: 1.5rem;"></p>
+            <a href="dashboard.html" class="cta-button">العودة للوحة التحكم</a>
+        </div>
+    </div>
+
+    <script src="database.js"></script>
+    <script>
+        const questions = [
+            { q: "ما هي ميزة 'مدارس آل' الأساسية؟", options: ["العمل بدون إنترنت", "العمل بالإنترنت فقط", "لا تدعم الهواتف"], correct: 0 },
+            { q: "أين يتم حفظ بيانات الطالب في نظامنا؟", options: ["في السحابة فقط", "في ذاكرة الجهاز محلياً", "لا يتم حفظها"], correct: 1 },
+            { q: "ما هو هدف مشروعنا الرئيسي؟", options: ["الترفيه", "تمكين التعليم الذكي للجميع", "التجارة فقط"], correct: 1 }
+        ];
+
+        let currentQ = 0;
+        let score = 0;
+
+        function loadQuestion() {
+            const q = questions[currentQ];
+            document.getElementById('question').innerText = q.q;
+            const optionsDiv = document.getElementById('options');
+            optionsDiv.innerHTML = '';
+            
+            q.options.forEach((opt, index) => {
+                const btn = document.createElement('button');
+                btn.innerText = opt;
+                btn.className = 'cta-button';
+                btn.style.background = 'rgba(255,255,255,0.05)';
+                btn.style.border = '1px solid rgba(255,255,255,0.1)';
+                btn.onclick = () => checkAnswer(index);
+                optionsDiv.appendChild(btn);
+            });
+        }
+
+        function checkAnswer(index) {
+            if(index === questions[currentQ].correct) {
+                score += 10;
+                alert('إجابة صحيحة! +10 نقاط');
+            } else {
+                alert('للأسف إجابة خاطئة، ركز أكثر!');
+            }
+
+            currentQ++;
+            if(currentQ < questions.length) {
+                loadQuestion();
+            } else {
+                showResult();
+            }
+        }
+
+        function showResult() {
+            document.getElementById('quiz-box').style.display = 'none';
+            document.getElementById('result').style.display = 'block';
+            document.getElementById('score-text').innerText = "لقد حصلت على " + score + " نقطة من أصل 30";
+            
+            // تحديث قاعدة البيانات الحقيقية
+            MadarisDB.updateProgress(score);
+        }
+
+        loadQuestion();
+    </script>
+</body>
+</html>
+
